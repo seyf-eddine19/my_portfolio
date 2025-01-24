@@ -1,0 +1,29 @@
+<section class="projects section" id="projects">
+    <h5 class="section-subtitle">My Portfolio</h5>
+    <h2 class="section-title">Some of My Recent Projects</h2>
+    <div class="container">
+        {% if projects %}
+            {% for project in projects %}
+            <article class="projects-card">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}" class="projects-img">
+                <div class="projects-content">
+                    <h3 class="projects-title"><a href="{% url 'project_detail' project.id %}">{{ project.title }}</a></h3>
+                    <p class="projects-description">{{ project.description|truncatewords:20 }}</p>
+                    <div class="projects-links">
+                        {% if project.url %}
+                            <a href="{{ project.url }}" class="button btn"><i class="fas fa-external-link-alt"></i></a>
+                        {% endif %}
+                        {% if project.github_url %}
+                            <a href="{{ project.github_url }}" class="button btn"> <i class="fab fa-github"></i></a>
+                        {% endif %}
+                        <a href="{% url 'project_detail' project.id %}" class="button btn">Show Details</a>
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        {% else %}
+        <p>No projects available.</p>
+        {% endif %}
+    </div>
+</section>
+

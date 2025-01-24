@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}project - {{ project.title }}{% endblock %}
+
+<!-- <meta name="description" content="{% for skill in project.skills.all %}{{ skill.name }}{% if not forloop.last %}, {% endif %}{% endfor %}">
+<meta name="keywords" content="{% for keyword in project.keywords.all %}{{ keyword.name }}{% if not forloop.last %}, {% endif %}{% endfor %}"> -->
+{% block metatags %}
+<meta name="description" content="{{ project.skills.all|join:', ' }}">
+<meta name="keywords" content="{{ project.keywords.all|join:', ' }}">
+{% endblock %}
+<!--===== MAIN =====-->
+{% block content %}
+<!--===== project =====-->
+<section class="project section" id="">
+    <h1 class="section-title">{{ project.title }}</h1>
+    <div class="container">
+        <div class="description_container">
+            <pre>{{ project.description|safe }}</pre>
+        </div>
+        <div class="detial_container" {% if not project.description %} style="width: 100%;" {% endif %}>
+        <div class="images-slider">
+            <div class="imgSlides">
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+            </div>
+            {% for img in project_images %}
+                <div class="imgSlides">
+                    <!-- <div class="numbertext">1 / 6</div> -->
+                    <img src="{{ img.image.url }}" alt="{{ project.title }}">
+                </div>
+            {% endfor %}
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10095;</a>
+            <a class="next" onclick="plusSlides(1)">&#10094;</a>
+            <!-- Thumbnail images -->
+            <div class="row">
+                <div class="column">
+                    <img class="demo cursor" src="{{ project.image.url }}" alt="{{ project.title }}" style="width:100%" onclick="currentSlide(1)">
+                </div>
+                {% for img in project_images %}
+                    <div class="column">
+                        <img class="demo cursor" src="{{ img.image.url }}" alt="{{ project.title }}" style="width:100%" onclick="currentSlide('{{ forloop.counter|add:1 }}')">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+            <!-- Promo Sign -->
+            {% if project.skills.all %}
+                <h5 class="detail_label">Skills : </h5>
+                <ul class="detail_ul">
+                {% for skill in project.skills.all %}
+                    <li class="detail_li">{{ skill.name }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if project.services.all %}
+                <h5 class="detail_label">services : </h5>
+                <ul class="detail_ul">
+                {% for service in project.services.all %}
+                    <li class="detail_li">{{ service.name }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if project.keywords.all %}
+                <h5 class="detail_label">Keywords : </h5>
+                <ul class="detail_ul">
+                {% for keyword in project.keywords.all %}
+                    <li class="detail_li">{{ keyword.name }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if project.url %}
+                <a href="{{ project.url }}" class="button btn">Project URL  <i class="fas fa-external-link-alt"></i></a>
+            {% endif %}
+            {% if project.github_url %}
+                <a href="{{ project.github_url }}" class="button btn">GitHub URL <i class="fab fa-github"></i></a>
+            {% endif %}
+        </div>
+        <!--===== MORE projectS =====-->
+        {% include "projects_section.html" %}
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
+    
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+    
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+    
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("imgSlides");
+        let dots = document.getElementsByClassName("demo");
+        console.log(dots)
+        console.log(slides)
+        console.log(i, n)
+        if (n > slides.length) {slideIndex = 1}
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        console.log(i, slideIndex)
+        slides[slideIndex-1].style.display = "block";
+        dots[slideIndex-1].className += " active";
+    }
+</script>
+{% endblock %}
+
