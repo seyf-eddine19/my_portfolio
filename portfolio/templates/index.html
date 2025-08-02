@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Seyf Eddine - Portfolio{% endblock %}
+{% block content %}
+    <!--===== HOME =====-->
+    {% include "home.html" %}
+    <!-- ===== SEARCH =====
+    <section class="search" id="search" style="padding: 2rem; background: #203039;">
+        <div class="container">
+            <form method="GET" action="{% url 'home' %}">
+                <input type="text" name="q" placeholder="Rechercher des projects..." value="{{ request.GET.q }}">
+                <button class="button" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </section> -->
+    <!--===== SERVICES =====-->
+    {% include "services.html" %}
+    <!--===== projects =====-->
+    {% include "projects_section.html" %}
+    <!--===== ABOUT =====-->
+    {% include "about_section.html" %}
+    <!--===== QURAN =====-->
+     <section class="quran-section">
+        <!-- زخرفة جانبية -->
+        <div class="quran-vertical-strip"></div>
+        <div class="quran-verse">
+            <p class="verse-arabic">﴿ وَمَا تَوْفِيقِىٓ إِلَّا بِٱللَّهِ ۚ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ أُنِيبُ ﴾<br></p>
+            <p class="verse-ref">هود: 88</p>
+        </div>
+    </section>
+    <!--===== SKILLS =====-->
+    {% include "skills.html" %} 
+    <!--===== CONTACT =====-->
+    {% include "contact_section.html" %}
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    var options = {
+        strings: ['Seyf Eddine', 'Desktop Developer', 'Front-End Developer', 'Web Developer'],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true
+    };
+    var typed = new Typed("#typed-strings", options)
+</script>
+{% endblock %}
