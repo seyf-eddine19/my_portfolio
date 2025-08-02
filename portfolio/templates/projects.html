@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}AFIND project{% endblock %}
+{% block content %}
+{% load static %}
+    <!--===== SEARCH =====-->
+    <section class="section search" id="search">
+        <div class="container">
+            <form method="GET" action="{% url 'projects' %}">
+                <input type="text" name="q" placeholder="Rechercher des projects..." value="{{ request.GET.q }}">
+                <button class="button" type="submit">Rechercher</button>
+            </form>
+        </div>
+    </section>
+    <!--===== projects =====-->
+    {% include "projects_section.html" %}
+{% endblock %}
