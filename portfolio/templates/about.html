@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Portfolio - About{% endblock %}
+{% block content %}
+    <!--===== ABOUT =====-->
+    {% include "about_section.html" %}
+    <!--===== QURAN =====-->
+     <section class="quran-section">
+        <!-- زخرفة جانبية -->
+        <div class="quran-vertical-strip"></div>
+        <div class="quran-verse">
+            <p class="verse-arabic">﴿ وَمَا تَوْفِيقِىٓ إِلَّا بِٱللَّهِ ۚ عَلَيْهِ تَوَكَّلْتُ وَإِلَيْهِ أُنِيبُ ﴾<br></p>
+            <p class="verse-ref">هود: 88</p>
+        </div>
+    </section>
+    <!--===== SKILLS =====-->
+    {% include "skills.html" %}
+    <!--===== SERVICES =====-->
+    {% include "services.html" %}
+{% endblock %}
