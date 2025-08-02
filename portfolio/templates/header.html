@@ -1,0 +1,23 @@
+{% load static %}
+<header class="header" id="header">
+    <nav class="nav">
+        <a title="My Logo" href="/" class="nav_logo">
+            <img max-width="100%" height="auto" class="my-logo" id="my-logo" src="{% static 'img/seyfeddine-logo.webp' %}" title="My Logo" alt="My Logo">
+            <!-- Seyf Eddine -->
+        </a>
+        <div class="nav_menu" id="nav-menu">
+            <ul class="nav_list"> 
+                <li class="nav_item"><a href="/#home" class="nav_link">Home</a></li>
+                <li class="nav_item"><a href="/#services" class="nav_link">Services</a></li>
+                <li class="nav_item"><a href="/projects" class="nav_link">Portfolio</a></li>
+                <li class="nav_item"><a href="/about" class="nav_link">About</a></li>
+                <li class="nav_item"><a href="/#skills" class="nav_link">Skills</a></li>
+                <li class="nav_item"><a href="/contact" class="nav_link">Contact</a></li>
+                <!-- <li class="nav_item"><i class='bx bx-moon theme_button' id="theme-button"></i></li> -->
+            </ul>
+        </div>
+        <div class="nav_toggle">
+            <i class="bx bx-menu" id="nav-toggle" onclick="hideMenu()"></i>
+        </div>
+    </nav>
+</header>
