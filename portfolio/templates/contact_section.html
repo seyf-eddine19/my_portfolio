@@ -1,0 +1,59 @@
+{% load static %}
+<section class="contact section" id="contact">
+    <h5 class="section-subtitle">Contact</h5>
+    <h2 class="section-title">Let's Talk</h2>
+  
+    <div class="container contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info contact-card">
+        <h3 class="contact-heading">Get in Touch</h3>
+  
+        <div class="info-item">
+            <i class="bx bx-phone"></i>
+            <span>(+213) 794 87 85 08</span>
+        </div>
+        <div class="info-item">
+            <i class="bx bx-map"></i>
+            <span>Tlemcen, Algeria</span>
+        </div>
+        <div class="info-item">
+            <i class="bx bx-envelope"></i>
+            <span>seyfeddin.freelance@gmail.com</span>
+        </div>
+        <!-- WhatsApp QR -->
+        <div class="info-item qr-box">
+            <i class="fab fa-whatsapp"></i>
+            <span> WhatsApp Me</span>
+            <img src="{% static 'img/whatsapp-qr.jpeg' %}" alt="WhatsApp QR" class="qr-img">
+        </div>
+      </div>
+  
+      <!-- Contact Form -->
+      <form action="#" method="POST" class="contact-form contact-card" id="contact-form">
+        {% csrf_token %}
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+              {% if message.tags == 'success' %}
+                <i class="fas fa-check-circle alert-icon"></i>
+              {% elif message.tags == 'error' %}
+                <i class="fas fa-exclamation-circle alert-icon"></i>
+              {% endif %}
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+  
+        <label for="full_name">Full Name</label>
+        <input type="text" id="full_name" name="full_name" placeholder="Your name" required>
+  
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
+  
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+  
+        <button type="submit" class="button">Send Message</button>
+      </form>
+    </div>
+</section>
